@@ -22,5 +22,5 @@ script:
   - docker tag simple-reverse-proxy buluma/simple-reverse-proxy:latest
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push buluma/simple-reverse-proxy
