@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - 13
+  - 12
+  - 14
+  - 15
 
 services:
   - docker
@@ -18,6 +21,6 @@ script:
   - docker build -t simple-reverse-proxy .
   - docker tag simple-reverse-proxy buluma/simple-reverse-proxy:latest
 
-# after_success:
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#   - docker push hiteshbn/simple-reverse-proxy
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push buluma/simple-reverse-proxy
