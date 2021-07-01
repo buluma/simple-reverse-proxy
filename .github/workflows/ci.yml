@@ -1,9 +1,9 @@
-name: ci
+name: Docker CI
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
       
   schedule:
     - cron: '45 * * * *'
