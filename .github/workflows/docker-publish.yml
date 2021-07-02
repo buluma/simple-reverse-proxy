@@ -1,4 +1,4 @@
-name: Docker
+name: GH Package
 
 on:
   push:
@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: travisci_reverseproxy
+  IMAGE_NAME: simple-reverse-proxy
 
 jobs:
   # Run tests.
