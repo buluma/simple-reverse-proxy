@@ -15,24 +15,24 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nginx-proxy:$(date +%s)
+      run: docker build . --file Dockerfile --tag nginx-proxy
     
     - name: Check that the nginx config file exists
       run: docker run --name=nginx-proxy -d \
         --health-cmd='stat /etc/nginx/nginx.conf || exit 1' \
-        nginx-proxy:$(date +%s)
+        nginx-proxy
 
     - name: Check if nginx is healthy
-      run: docker inspect --format='' nginx-proxy:$(date +%s)
+      run: docker inspect --format='' nginx-proxy
       
     - name: Make Docker container Unhealthy and check
-      run: docker exec nginx-proxy:$(date +%s) rm /etc/nginx/nginx.conf
+      run: docker exec nginx-proxy rm /etc/nginx/nginx.conf
       
     - name: Check if nginx is healthy
-      run: sleep 5; docker inspect --format='' nginx-proxy:$(date +%s)
+      run: sleep 5; docker inspect --format='' nginx-proxy
       
     - name: Creating the nginx.conf file
-      run: docker exec nginx-proxy:$(date +%s) touch /etc/nginx/nginx.conf
+      run: docker exec nginx-proxy touch /etc/nginx/nginx.conf
       
     - name: Make container go healthy
-      run: sleep 5; docker inspect --format='' nginx-proxy:$(date +%s) healthy
+      run: sleep 5; docker inspect --format='' nginx-proxy healthy
