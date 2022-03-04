@@ -3,7 +3,7 @@ name: Docker CI
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
     inputs:
       debug:
