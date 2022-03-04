@@ -1,5 +1,5 @@
 # FROM nginx:alpine
 # FROM docker.pkg.github.com/buluma/simple-reverse-proxy/simple-reverse-proxy:latest
-LABEL org.opencontainers.image.source = "https://github.com/buluma/simple-reverse-proxy"
+FROM ghcr.io/buluma/simple-reverse-proxy/simple-reverse-proxy:latest
 
 COPY nginx.conf /etc/nginx/nginx.conf
