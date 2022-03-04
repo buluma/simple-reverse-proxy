@@ -3,15 +3,19 @@ name: Docker CI
 on:
   push:
     branches:
-      - 'main'
-      
-    # Sequence of patterns matched against refs/tags
-    tags:        
-      - v*           # Push events to v1.0, v1.1, and v1.9 tags
-      
-  schedule:
-    - cron: '45 * * * *'
+      - master
   workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        required: false
+        default: 'false'
+  schedule:
+    - cron: '0 8 * * *'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
   
 env:
  # TODO: Change variable to your image's name.
